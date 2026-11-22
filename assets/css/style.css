@@ -584,6 +584,15 @@ input, select, textarea {
 .cta-mobile-text {
   display: none;
 }
+.trust-desktop-text {
+  display: inline;
+}
+.trust-mobile-text {
+  display: none;
+}
+.hero-title-break {
+  display: none;
+}
 @media (max-width: 580px) {
   .cta-desktop-text { display: none; }
   .cta-mobile-text { display: inline; }
@@ -652,6 +661,7 @@ input, select, textarea {
   font-weight: 800;
   letter-spacing: -0.015em;
   margin-bottom: 0.85rem;
+  text-wrap: balance;
 }
 
 @media (min-width: 768px) {
@@ -2226,15 +2236,19 @@ input, select, textarea {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    background: rgba(212, 175, 55, 0.25);
-    color: #FEF08A;
-    border: 1px solid rgba(212, 175, 55, 0.4);
+    background: #1877F2;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 0.15rem 0.55rem;
     border-radius: var(--radius-full);
     font-size: 0.68rem;
     font-weight: 700;
     white-space: nowrap;
     flex-shrink: 0;
+  }
+  .top-notice-mobile-call svg {
+    width: 11px;
+    height: 11px;
   }
 
   /* Header on Mobile: Guaranteed Zero-Overflow */
@@ -2305,20 +2319,24 @@ input, select, textarea {
     display: inline;
   }
   .mobile-menu-toggle {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    background: #FAF7F2;
-    border: 1px solid var(--border-light);
+    background: rgba(123, 17, 19, 0.04);
+    border: 1.5px solid rgba(123, 17, 19, 0.22);
     border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   .mobile-menu-toggle svg {
     width: 18px;
     height: 18px;
+    stroke: var(--color-primary);
   }
 
   /* Hero Section on Mobile */
@@ -2328,20 +2346,30 @@ input, select, textarea {
   .hero-grid-layout {
     gap: 1.5rem;
   }
+  .trust-desktop-text {
+    display: none !important;
+  }
+  .trust-mobile-text {
+    display: inline !important;
+  }
+  .hero-title-break {
+    display: block !important;
+  }
   .hero-trust-tag {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    font-size: 0.65rem;
-    padding: 0.25rem 0.55rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
+    font-size: 0.6875rem;
+    padding: 0.28rem 0.65rem;
+    margin-bottom: 0.55rem;
+    line-height: 1.25;
+    white-space: nowrap;
     max-width: 100%;
     border-radius: var(--radius-full);
   }
   .hero-trust-tag svg {
-    width: 12px;
-    height: 12px;
+    width: 13px;
+    height: 13px;
     flex-shrink: 0;
   }
   .hero-hindi-subtitle {
@@ -2351,8 +2379,9 @@ input, select, textarea {
   }
   .hero-title-main {
     font-size: 1.45rem;
-    line-height: 1.25;
+    line-height: 1.28;
     margin-bottom: 0.65rem;
+    text-wrap: balance;
   }
   .hero-intro-lead {
     font-size: 0.85rem;
@@ -2387,11 +2416,13 @@ input, select, textarea {
   .hero-actions-row {
     flex-direction: column;
     width: 100%;
-    gap: 0.65rem;
-    margin-bottom: 1.5rem;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
   }
   .hero-actions-row .btn {
     width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
   }
 
   /* Hero Stats 2x2 Grid with Touch Cards */
@@ -2586,26 +2617,9 @@ input, select, textarea {
     margin-bottom: 2rem;
   }
 
-  /* Floating Social Button on Mobile - Sleek Circular FAB */
+  /* Floating Social Button on Mobile: Hide to prevent overlapping CTA buttons and content */
   .floating-social-widget {
-    bottom: 20px;
-    right: 16px;
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 14px rgba(24, 119, 242, 0.45);
-  }
-  .floating-social-widget span {
-    display: none;
-  }
-  .floating-social-widget svg {
-    width: 24px;
-    height: 24px;
-    margin: 0;
+    display: none !important;
   }
 }
 
@@ -2640,6 +2654,10 @@ input, select, textarea {
   .mobile-menu-toggle {
     width: 32px;
     height: 32px;
+  }
+  .hero-trust-tag {
+    font-size: 0.625rem;
+    padding: 0.22rem 0.5rem;
   }
   .hero-title-main {
     font-size: 1.35rem;
