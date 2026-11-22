@@ -18,16 +18,17 @@
 <body>
 
   <!-- =========================================================================
-       1. Top Notice Announcement Bar (Clean & Compact)
+       1. Top Notice Announcement Bar (Clean, Compact & Mobile-Optimized)
        ========================================================================= -->
   <div class="top-notice-bar">
     <div class="container top-notice-content">
-      <div style="display: flex; align-items: center; gap: 0.6rem;">
+      <!-- Desktop Notice Elements -->
+      <div class="top-notice-desktop-left">
         <span class="top-notice-pill">OFFICIAL INTAKE 2026</span>
         <span>New Manuscript Digitization Batch Open • <strong>70% Salary Advance credited to bank account</strong> upon registration!</span>
       </div>
 
-      <div class="top-notice-links">
+      <div class="top-notice-links top-notice-desktop-right">
         <a href="tel:+919876543210">
           <span class="pulse-dot"></span>
           Helpline: +91 98765 43210
@@ -36,6 +37,18 @@
         <a href="#payment-proofs">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           100% Verified Payouts
+        </a>
+      </div>
+
+      <!-- Mobile Clean Single-Row Announcement -->
+      <div class="top-notice-mobile">
+        <div class="mobile-notice-left">
+          <span class="pulse-dot"></span>
+          <span class="top-notice-mobile-txt"><strong>70% Salary Advance</strong> in Bank Account</span>
+        </div>
+        <a href="tel:+919876543210" class="top-notice-mobile-call">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Helpline
         </a>
       </div>
     </div>
@@ -81,7 +94,8 @@
       <!-- Action Buttons -->
       <div class="header-actions-group">
         <button type="button" class="btn btn-header-cta" onclick="openApplicationModal('2')">
-          <span>Select Plan</span>
+          <span class="cta-full-text">Select Plan</span>
+          <span class="cta-compact-text">Plans</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
