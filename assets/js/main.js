@@ -237,22 +237,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = planData[plan] || planData['2'];
 
       if (!name || !phone) {
-        alert('कृपया अपना नाम और व्हाट्सएप नंबर भरें। (Please enter your name and WhatsApp number.)');
+        alert('कृपया अपना नाम और मोबाइल नंबर भरें। (Please enter your name and mobile number.)');
         return;
       }
 
       // Show instant confirmation toast
-      showToast(`धन्यवाद ${name}! आपका आवेदन सफलतापूवर्क प्राप्त हुआ। 70% एडवांस (₹${data.advance}) सत्यापन जारी है।`);
+      showToast(`धन्यवाद ${name}! आपका आवेदन सफलतापूवर्क प्राप्त हुआ। 70% एडवांस (₹${data.advance.toLocaleString('en-IN')}) सत्यापन हेतु हमारी टीम जल्द संपर्क करेगी।`);
 
-      // Close modal after brief pause
+      // Reset form & close modal
+      regForm.reset();
       setTimeout(() => {
         closeApplicationModal();
-        // Redirect to WhatsApp with pre-filled message
-        const waMsg = encodeURIComponent(
-          `नमस्ते रिया बुक पब्लिकेशन (RBP),\nमैंने ${data.name} के लिए आवेदन किया है।\nनाम: ${name}\nफ़ोन: ${phone}\nडिवाइस: ${device}\nकृपया 70% एडवांस और असाइनमेंट फाइल साझा करें।`
-        );
-        window.open(`https://wa.me/919876543210?text=${waMsg}`, '_blank');
-      }, 1200);
+      }, 1500);
     });
   }
 

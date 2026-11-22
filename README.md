@@ -7,7 +7,7 @@ Official single-page web portal for **Riya Book Publication (Reeya Digital)** �
 - **70% Salary Advance Guarantee**: Prominent highlights across Plan 1 (₹25,000), Plan 2 (₹30,000), and Plan 3 (₹35,000).
 - **Interactive Calculator**: Real-time earnings and 70% advance calculation.
 - **Book Catalog**: Curated literary showcase with filters.
-- **Interactive Application Modal**: Direct WhatsApp lead routing.
+- **Interactive Application Modal**: Direct application intake and verification.
 - **Full-Resolution Poster Lightbox**: High-definition circular previews.
 
 ## 📁 Project Structure
