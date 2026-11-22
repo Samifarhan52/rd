@@ -72,6 +72,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -80,6 +81,7 @@ body {
   color: var(--text-body);
   line-height: 1.55;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 img {
@@ -100,11 +102,12 @@ button {
   border: none;
   background: none;
   transition: var(--transition);
+  touch-action: manipulation;
 }
 
 input, select, textarea {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 16px; /* 16px prevents iOS Safari auto-zoom */
 }
 
 .container {
@@ -181,6 +184,7 @@ input, select, textarea {
   transition: var(--transition);
   text-align: center;
   white-space: nowrap;
+  touch-action: manipulation;
 }
 
 .btn-primary {
@@ -251,7 +255,7 @@ input, select, textarea {
 }
 
 /* ==========================================================================
-   1. TOP ANNOUNCEMENT BAR (Clean & Compact)
+   1. TOP ANNOUNCEMENT BAR
    ========================================================================== */
 .top-notice-bar {
   background: var(--bg-top-bar);
@@ -316,7 +320,7 @@ input, select, textarea {
 }
 
 /* ==========================================================================
-   2. UNIFIED FLAGSHIP SITE HEADER (Crossword.in Standard)
+   2. UNIFIED FLAGSHIP SITE HEADER
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -387,12 +391,11 @@ input, select, textarea {
   color: var(--color-gold-dark);
   font-weight: 700;
   font-size: 0.8rem;
-  /* CRITICAL: Never add letter-spacing to Hindi */
   letter-spacing: normal !important;
   text-transform: none;
 }
 
-/* Navigation Menu - SINGLE LINE, NO WRAPPING */
+/* Navigation Menu - Single Line */
 .site-nav-menu {
   display: none;
   align-items: center;
@@ -412,7 +415,7 @@ input, select, textarea {
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--text-main);
-  white-space: nowrap; /* PREVENT MULTI-LINE BREAKING */
+  white-space: nowrap;
   position: relative;
   padding: 0.35rem 0;
   display: inline-flex;
@@ -504,8 +507,20 @@ input, select, textarea {
   pointer-events: auto;
 }
 
+/* Responsive CTA Spans */
+.cta-desktop-text {
+  display: inline;
+}
+.cta-mobile-text {
+  display: none;
+}
+@media (max-width: 580px) {
+  .cta-desktop-text { display: none; }
+  .cta-mobile-text { display: inline; }
+}
+
 /* ==========================================================================
-   3. FLAGSHIP HERO SECTION (Fits Viewport Harmoniously)
+   3. FLAGSHIP HERO SECTION
    ========================================================================== */
 .hero-flagship-section {
   position: relative;
@@ -531,7 +546,6 @@ input, select, textarea {
   }
 }
 
-/* Hero Left Content */
 .hero-trust-tag {
   display: inline-flex;
   align-items: center;
@@ -556,7 +570,7 @@ input, select, textarea {
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 0.35rem;
-  letter-spacing: normal !important; /* CRITICAL for Hindi */
+  letter-spacing: normal !important;
   display: block;
 }
 
@@ -731,7 +745,7 @@ input, select, textarea {
 }
 
 /* ==========================================================================
-   4. BRAND BANNER STRIP (Showing brand-banner.jpg)
+   4. BRAND BANNER STRIP
    ========================================================================== */
 .brand-crest-banner-strip {
   background: #FFFFFF;
@@ -1854,7 +1868,7 @@ input, select, textarea {
   padding: 0.75rem 1rem;
   border: 1.5px solid var(--border-light);
   border-radius: var(--radius-md);
-  font-size: 0.9375rem;
+  font-size: 16px; /* Prevents auto zoom */
   color: var(--text-main);
   transition: var(--transition);
 }
@@ -2091,4 +2105,335 @@ input, select, textarea {
 
 .toast-notice.show {
   transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVENESS & TOUCH OPTIMIZATION (< 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Top Notice Bar on Mobile */
+  .top-notice-bar {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.725rem;
+  }
+  .top-notice-content {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.25rem;
+  }
+  .top-notice-links {
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  /* Header on Mobile */
+  .header-inner-row {
+    padding: 0.65rem 1rem;
+    gap: 0.75rem;
+  }
+  .brand-emblem-wrap {
+    width: 38px;
+    height: 38px;
+  }
+  .brand-name-en {
+    font-size: 1.05rem;
+  }
+  .brand-meta-sub {
+    font-size: 0.65rem;
+  }
+  .btn-luxury-cta {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.75rem;
+  }
+
+  /* Hero Section on Mobile */
+  .hero-flagship-section {
+    padding: 1.5rem 0 2rem;
+  }
+  .hero-grid-layout {
+    gap: 1.75rem;
+  }
+  .hero-trust-tag {
+    font-size: 0.6875rem;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.65rem;
+  }
+  .hero-hindi-subtitle {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+  .hero-title-main {
+    font-size: 1.85rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+  .hero-intro-lead {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+
+  /* Guarantee Card on Mobile */
+  .hero-advance-guarantee-card {
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .advance-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .advance-badge-pill {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  /* CTAs Full Width Stacked on Mobile */
+  .hero-actions-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-actions-row .btn {
+    width: 100%;
+  }
+
+  /* Hero Stats 2x2 Grid with Touch Cards */
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+    padding-top: 1rem;
+  }
+  .hero-stat-item {
+    background: #FFFFFF;
+    padding: 0.65rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-light);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-stat-item h4 {
+    font-size: 1.35rem;
+  }
+  .hero-stat-item p {
+    font-size: 0.6875rem;
+  }
+
+  /* Hero Poster Card */
+  .hero-poster-footer-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  .hero-poster-footer-bar .btn {
+    width: 100%;
+  }
+
+  /* Section Headers on Mobile */
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  .section-title {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+  .section-description {
+    font-size: 0.9rem;
+  }
+
+  /* Plans on Mobile */
+  .plans-section {
+    padding: 3rem 0;
+  }
+  .plans-grid {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .plan-header {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+  .plan-salary-box {
+    padding: 1.25rem;
+  }
+  .salary-val {
+    font-size: 1.95rem;
+  }
+  .plan-body {
+    padding: 1.25rem;
+  }
+  .plan-footer {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  /* Poster Showcase Box */
+  .poster-showcase-box {
+    padding: 1.25rem;
+  }
+  .poster-preview-strip {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .poster-thumb {
+    width: 100%;
+    height: 120px;
+  }
+  .poster-showcase-box .btn {
+    width: 100%;
+  }
+
+  /* Calculator on Mobile */
+  .calculator-section {
+    padding: 3rem 0;
+  }
+  .calc-inputs-side {
+    padding: 1.5rem 1rem;
+  }
+  .calc-results-side {
+    padding: 1.5rem 1rem;
+  }
+  .calc-hero-salary .number {
+    font-size: 2.25rem;
+  }
+
+  /* Catalog on Mobile: Swipeable Filter Tabs */
+  .catalog-section {
+    padding: 3rem 0;
+  }
+  .catalog-filter-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    scrollbar-width: none;
+  }
+  .catalog-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+  }
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+  .book-cover-wrap {
+    height: 180px;
+    padding: 0.85rem;
+  }
+  .book-title-mockup {
+    font-size: 0.9rem;
+  }
+  .book-card-info {
+    padding: 0.75rem 0.5rem;
+  }
+  .book-name {
+    font-size: 0.8125rem;
+  }
+  .book-details-row {
+    font-size: 0.6875rem;
+  }
+
+  /* Process & Proofs & FAQ on Mobile */
+  .process-section, .proofs-section, .faq-section {
+    padding: 3rem 0;
+  }
+  .step-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .proof-card {
+    padding: 1.25rem 1rem;
+  }
+  .faq-question-btn {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  /* Brand Banner on Mobile */
+  .brand-crest-banner-strip {
+    padding: 1.25rem 0;
+  }
+  .brand-banner-flex {
+    text-align: center;
+  }
+  .brand-banner-flex .btn {
+    width: 100%;
+  }
+
+  /* Modal on Mobile */
+  .modal-dialog {
+    max-width: 95%;
+    max-height: 90vh;
+    border-radius: var(--radius-md);
+  }
+  .modal-header {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+  .modal-header h3 {
+    font-size: 1.15rem;
+  }
+  .modal-body {
+    padding: 1.25rem;
+  }
+
+  /* Footer on Mobile */
+  .site-footer {
+    padding: 3rem 0 1.5rem;
+  }
+  .footer-grid {
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Floating WhatsApp on Mobile */
+  .floating-whatsapp-widget {
+    bottom: 16px;
+    right: 16px;
+    padding: 0.65rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra Small Phones (< 400px, e.g. iPhone SE) */
+@media (max-width: 399px) {
+  .header-inner-row {
+    padding: 0.5rem 0.75rem;
+    gap: 0.35rem;
+  }
+  .brand-emblem-wrap {
+    width: 32px;
+    height: 32px;
+  }
+  .brand-name-en {
+    font-size: 0.9rem;
+  }
+  .brand-meta-sub {
+    font-size: 0.575rem;
+  }
+  .btn-luxury-cta {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.7rem;
+  }
+  .hero-title-main {
+    font-size: 1.6rem;
+  }
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .book-cover-wrap {
+    height: 200px;
+  }
 }
