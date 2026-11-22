@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 9. Smooth Scroll for all in-page anchors ---
+  // --- 9. Smooth Scroll for all in-page anchors with dynamic header offset ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -264,9 +264,60 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+          const siteHeader = document.querySelector('.site-header');
+          const headerHeight = siteHeader ? siteHeader.offsetHeight : 70;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
         }
       }
     });
   });
+
+  // --- 10. Persistently Fixed / Sticky Navbar Scroll State & Scrollspy ---
+  const siteHeader = document.querySelector('.site-header');
+  const navLinks = document.querySelectorAll('.site-nav-menu .nav-menu-link');
+  const trackedSections = document.querySelectorAll('section[id]');
+
+  function handleNavbarScroll() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Toggle elevated shadow and backdrop blur
+    if (siteHeader) {
+      if (scrollY > 15) {
+        siteHeader.classList.add('scrolled');
+      } else {
+        siteHeader.classList.remove('scrolled');
+      }
+    }
+
+    // Scrollspy: highlight active section link in navigation menu
+    if (navLinks.length && trackedSections.length) {
+      let currentSectionId = '';
+      const headerOffset = siteHeader ? siteHeader.offsetHeight + 60 : 120;
+
+      trackedSections.forEach(sec => {
+        const top = sec.offsetTop - headerOffset;
+        const height = sec.offsetHeight;
+        if (scrollY >= top && scrollY < top + height) {
+          currentSectionId = sec.getAttribute('id');
+        }
+      });
+
+      if (currentSectionId) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+  handleNavbarScroll(); // Run immediately on page load
 });

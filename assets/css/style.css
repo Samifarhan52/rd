@@ -70,9 +70,11 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -80,8 +82,13 @@ body {
   background-color: var(--bg-page);
   color: var(--text-body);
   line-height: 1.55;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Offset anchor scrolling targets for sticky/fixed navigation */
+section[id], div[id] {
+  scroll-margin-top: 80px;
 }
 
 img {
@@ -320,15 +327,29 @@ input, select, textarea {
 }
 
 /* ==========================================================================
-   2. UNIFIED FLAGSHIP SITE HEADER
+   2. UNIFIED FLAGSHIP SITE HEADER (Persistently Fixed / Sticky on Scroll)
    ========================================================================== */
 .site-header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
   background: #FFFFFF;
   border-bottom: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 22px rgba(123, 17, 19, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-bottom-color: rgba(197, 155, 39, 0.35);
 }
 
 .header-inner-row {
@@ -423,7 +444,8 @@ input, select, textarea {
   transition: var(--transition);
 }
 
-.nav-menu-link:hover {
+.nav-menu-link:hover,
+.nav-menu-link.active {
   color: var(--color-primary);
 }
 
@@ -438,7 +460,8 @@ input, select, textarea {
   transition: width 0.2s ease;
 }
 
-.nav-menu-link:hover::after {
+.nav-menu-link:hover::after,
+.nav-menu-link.active::after {
   width: 100%;
 }
 
@@ -2111,6 +2134,13 @@ input, select, textarea {
    COMPREHENSIVE MOBILE RESPONSIVENESS & TOUCH OPTIMIZATION (< 768px)
    ========================================================================== */
 @media (max-width: 767px) {
+  html {
+    scroll-padding-top: 65px;
+  }
+  section[id], div[id] {
+    scroll-margin-top: 65px;
+  }
+
   .container {
     padding: 0 1rem;
   }
